@@ -1,30 +1,29 @@
 const express = require("express");
-const app = express();
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const mongoose = require("mongoose");
 const keys = require("./config/keys");
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: keys.googleClientID,
-      clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback",
-    },
-    (accessToken, refreshToken, profile, done) => {
-      console.log(accessToken);
-      console.log(refreshToken);
-      console.log(profile);
-    }
-  )
-);
+const passport = require("passport");
+const cookieSession = require("cookie-session");
 
-app.get(
-  "/auth/google",
-  passport.authenticate("google", {
-    scope: ["profile", "email"],
+require("./models/User");
+//as nothing is exported from passport.js so no var required
+require("./services/passport");
+const app = express();
+
+app.use(
+  cookieSession({
+    //30days in ms
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    //cookieKey random string for encrytion
+    keys: [keys.cookieKey],
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
+// const authRoutes = require("./routes/authRoutes");
+// authRoutes(app);
+// as the function is exportes from authRoutes so in 2nd parameter it is directly invoked
+require("./routes/authRoutes")(app);
 
-app.get("/auth/google/callback", passport.authenticate("google"));
+mongoose.connect(keys.mongoURI);
 
 app.listen(process.env.PORT || 5000);
