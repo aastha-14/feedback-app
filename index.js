@@ -11,7 +11,6 @@ const app = express();
 
 app.use(
   cookieSession({
-    //30days in ms
     maxAge: 30 * 24 * 60 * 60 * 1000,
     //cookieKey random string for encrytion
     keys: [keys.cookieKey],
@@ -19,6 +18,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
 // const authRoutes = require("./routes/authRoutes");
 // authRoutes(app);
 // as the function is exportes from authRoutes so in 2nd parameter it is directly invoked
