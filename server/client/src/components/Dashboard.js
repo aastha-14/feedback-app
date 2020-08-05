@@ -3,14 +3,17 @@ import { connect } from "react-redux";
 
 class Dashboard extends Component {
   render() {
-    if (!this.props.auth.credits) {
-      console.log("no credits");
-    }
-
     return (
       <div>
         <center>
           <h1>Dashboard</h1>
+          {this.props.auth === null ? (
+            ""
+          ) : this.props.auth.credits ? (
+            <div>Start sending mail for survey</div>
+          ) : (
+            <div>Add credits to send mail for survey! </div>
+          )}
         </center>
       </div>
     );
