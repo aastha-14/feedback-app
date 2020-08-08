@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
 
 require("./models/User");
+require("./models/Survey");
 //as nothing is exported from passport.js so no var required
 require("./services/passport");
 const app = express();
@@ -26,6 +27,7 @@ app.use(passport.session());
 // as the function is exportes from authRoutes so in 2nd parameter it is directly invoked
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   //Express will serve up porduction assets
