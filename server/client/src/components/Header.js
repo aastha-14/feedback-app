@@ -8,7 +8,7 @@ class Header extends Component {
   renderContent() {
     switch (this.props.auth) {
       case null:
-        return;
+        return <h5>Loading...</h5>;
       case false:
         return (
           <li>

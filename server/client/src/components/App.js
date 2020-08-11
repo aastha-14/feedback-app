@@ -5,6 +5,7 @@ import * as actions from "../actions";
 import Header from "./Header";
 import Home from "./Home";
 import Dashboard from "./Dashboard";
+import SurveyNew from "./surveys/SurveyNew";
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route exact path="/surveys">
               <Dashboard />
             </Route>
+            <Route exact path="/surveys/new" component={SurveyNew} />
           </Switch>
         </BrowserRouter>
       </div>
