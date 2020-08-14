@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import SurveyList from "./surveys/SurveyList";
 
 class Dashboard extends Component {
   render() {
@@ -25,6 +26,7 @@ class Dashboard extends Component {
           ) : (
             <div>Add credits to send mail for survey! </div>
           )}
+          <SurveyList />
         </center>
       </div>
     );
