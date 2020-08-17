@@ -28,15 +28,14 @@ class SurveyForm extends Component {
           {this.renderFields()}
           <Link
             to="/surveys"
-            className="#80cbc4 teal lighten-3 btn-flat white-text"
+            className="btn"
+            style={{ backgroundColor: "#dc3545" }}
           >
             Cancel
           </Link>
-          <button
-            className="waves-effect waves-light #0d47a1 blue darken-4 btn-flat right white-text"
-            type="submit"
-          >
-            Next<i className="large material-icons right">chevron_right</i>
+          <button className="btn btn-warning right blue darken-4" type="submit">
+            <span>Next </span>
+            <i className="fa fa-chevron-circle-right"></i>
           </button>
         </form>
       </div>

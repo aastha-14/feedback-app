@@ -22,18 +22,18 @@ function SurveyFormReview({ onCancel, formValues, submitSurvey, history }) {
       <h5>Please confirm your entries. </h5>
       {renderContent()}
       <button
-        className="yellow white-text darken-3 btn-flat"
+        className="btn"
         onClick={onCancel}
-        style={{ marginTop: "20px" }}
+        style={{ marginTop: "20px", backgroundColor: "#ffc107" }}
       >
-        <i className="large material-icons left">chevron_left</i>Go Back
+        <i class="fa fa-chevron-circle-left"></i> Go Back
       </button>
       <button
-        className="green white-text btn-flat right"
+        className="btn float-right blue darken-4"
         onClick={() => submitSurvey(formValues, history)}
         style={{ marginTop: "20px" }}
       >
-        Send Survey<i className="large material-icons right">email</i>
+        Send Survey <i class="fa fa-envelope"></i>
       </button>
     </div>
   );

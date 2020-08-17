@@ -9,23 +9,24 @@ class SurveyList extends Component {
   renderContent() {
     return this.props.surveys.reverse().map((survey) => {
       return (
-        <div key={survey.id} className="card blue-grey darken-1">
-          <div className="card-content white-text">
+        <div key={survey._id} className="card">
+          <div className="card-body">
             <span className="card-title">{survey.title}</span>
-            <p>{survey.body}</p>
-            <p className="right">
+            <p className="card-text">{survey.body}</p>
+            <p className="card-text text-right">
               Sent On: {new Date(survey.dateSent).toLocaleDateString()}
             </p>
-          </div>{" "}
-          <div className="card-action">
-            <a>Yes: {survey.yes} </a>
-            <a>No: {survey.no} </a>
+          </div>
+          <div className="card-footer">
+            <span className="card-link">Yes: {survey.yes} </span>
+            <span className="card-link">No: {survey.no} </span>
           </div>
         </div>
       );
     });
   }
   render() {
+    if (!this.props.surveys) return <h1>Loading...</h1>;
     return <div>{this.renderContent()}</div>;
   }
 }
@@ -35,3 +36,5 @@ function mapStateToProps({ surveys }) {
 }
 
 export default connect(mapStateToProps, { fetchSurveys })(SurveyList);
+
+// http://e7915aa06cf0.ngrok.io/api/surveys/webhook

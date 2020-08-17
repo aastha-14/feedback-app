@@ -88,4 +88,9 @@ module.exports = (app) => {
       res.status(422).send(error);
     }
   });
+
+  // app.delete("/api/survey/delete/:surveyId", requireLogin, async (req, res) => {
+  //   const survey = await Survey.deleteOne({ _id: req.param.id });
+  //   res.send("Survey deleted");
+  // });
 };
