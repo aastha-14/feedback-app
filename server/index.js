@@ -22,9 +22,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// const authRoutes = require("./routes/authRoutes");
-// authRoutes(app);
-// as the function is exportes from authRoutes so in 2nd parameter it is directly invoked
+
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
 require("./routes/surveyRoutes")(app);
@@ -40,6 +38,11 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 
 app.listen(process.env.PORT || 5000);

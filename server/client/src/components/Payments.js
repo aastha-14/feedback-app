@@ -14,9 +14,9 @@ class Payments extends Component {
         description="₹5 for 5 email credits"
         currency="INR"
       >
-        <span className="nav-link btn text-white blue darken-4 float-right">
+        <h5 className="nav-link">
           Add Credits
-        </span>
+        </h5>
       </StripeCheckout>
     );
   }

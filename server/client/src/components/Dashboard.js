@@ -28,7 +28,6 @@ class Dashboard extends Component {
               ) : (
                 <>
                   <div>Start sending mail to receive feedback.</div>
-
                   <div className="fixed-action-btn">
                     <Link
                       to="/surveys/new"

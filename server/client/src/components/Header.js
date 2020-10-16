@@ -9,7 +9,7 @@ class Header extends Component {
     switch (this.props.auth) {
       case null:
         return (
-          <li role="presentation" className="nav-item">
+          <li className='nav-item'>
             <span className="nav-link">
               <Skeleton />
             </span>
@@ -18,42 +18,48 @@ class Header extends Component {
       case false:
         return (
           <>
-            <li role="presentation" className="nav-item ml-auto">
-              <a
-                href="/auth/google"
-                className="nav-link btn text-white blue darken-4"
-              >
-                Sign In with Google
+            <li className='nav-item'>
+              <h5>
+                <a
+                  href="/auth/google"
+                  className="nav-link text-dark"
+                >
+                  Sign In with Google
               </a>
+              </h5>
             </li>
-            <li role="presentation" className="nav-item ml-auto">
-              <a
-                href="/auth/facebook"
-                className="nav-link btn text-white blue darken-4"
-              >
-                Sign In with Facebook
+            <li className='nav-item'>
+              <h5>
+                <a
+                  href="/auth/facebook"
+                  className="nav-link text-dark"
+                >
+                  Sign In with Facebook
               </a>
+              </h5>
             </li>
           </>
         );
       default:
         return (
           <>
-            <li role="presentation" className="nav-item ml-auto">
-              <span className="nav-link float-right text-white">
+            <li className='nav-item'>
+              <h6 className="nav-link text-dark">
                 Credits: {this.props.auth.credits}
-              </span>
+              </h6>
             </li>
-            <li role="presentation" className="nav-item ml-auto">
-              <Payments className="nav-link" />
+            <li className='nav-item'>
+              <Payments className="nav-link text-dark" />
             </li>
-            <li role="presentation" className="nav-item ml-auto">
-              <a
-                href="/api/logout"
-                className="nav-link btn text-white blue darken-4 float-right"
-              >
-                Sign Out
+            <li className='nav-item'>
+              <h5>
+                <a
+                  href="/api/logout"
+                  className="nav-link text-dark"
+                >
+                  Sign Out
               </a>
+              </h5>
             </li>
           </>
         );
@@ -61,21 +67,15 @@ class Header extends Component {
   }
   render() {
     return (
-      <div className="navbar navbar-light navbar-expand-md navigation-clean-button py-auto my-auto bg-info">
-        <Link className="navbar-brand" to={this.props.auth ? "/surveys" : "/"}>
-          <h4>Feedback</h4>
-        </Link>
-        <button
-          data-toggle="collapse"
-          data-target="#navcol-1"
-          className="navbar-toggler"
-        >
-          <span className="sr-only">Toggle navigation</span>
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navcol-1">
-          <ul className="navbar-nav w-100">{this.renderContent()}</ul>
-        </div>
+      <div>
+        <ul className='nav nav-tabs py-3 bg-warning'>
+          <li className='nav-item'>
+            <Link className="nav-link" to={this.props.auth ? "/surveys" : "/"}>
+              <h5>Feedback</h5>
+            </Link>
+          </li>
+          {this.renderContent()}
+        </ul>
       </div>
     );
   }
